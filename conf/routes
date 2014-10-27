@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                controllers.ApplicationController.index()
+
+GET         /votar/:votado/:naoVotado        controllers.RankingController.votar(votado:Int, naoVotado:Int)
+
+POST        /usuario/cadastrar               controllers.UsuarioController.cadastrar()
+
+GET         /ranking                         controllers.RankingController.exibir()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                    controllers.Assets.at(path="/public", file)

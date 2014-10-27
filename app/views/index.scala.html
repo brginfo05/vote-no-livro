@@ -1,0 +1,23 @@
+@(primeiroLivro: Livro)(segundoLivro: Livro)
+
+@main("") {
+    <div class="center">
+        <div class="page-header">
+            <h1>Qual livro você prefere?</h1>
+        </div>
+    </div>
+
+    <div class="center">
+        <a href="@routes.RankingController.votar(primeiroLivro.getISBN, segundoLivro.getISBN)" class="thumbnail inline">
+            <img src="@routes.Assets.at("images/capas/" + primeiroLivro.getCapa)" alt="...">
+        </a>
+
+        <label class="escolha-lbl">
+            OU
+        </label>
+
+        <a href="@routes.RankingController.votar(segundoLivro.getISBN, primeiroLivro.getISBN)" class="thumbnail inline">
+            <img src="@routes.Assets.at("images/capas/" + segundoLivro.getCapa)" alt="...">
+        </a>
+    </div>
+}
