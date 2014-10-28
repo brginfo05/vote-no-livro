@@ -1,46 +1,43 @@
 # --- !Ups
 
-create table livro (
-  isbn                      integer not null,
-  nome                      varchar(255),
-  constraint pk_livro primary key (isbn))
-;
 
-create table usuario (
-  id                        bigint not null,
-  email                     varchar(254),
-  name                      varchar(255),
-  constraint pk_usuario primary key (id))
-;
+CREATE TABLE livro (
+    isbn integer NOT NULL,
+    capa character varying(255),
+    nome character varying(255)
+);
 
-create table voto (
-  escolhido_isbn            integer,
-  nao_escolhido_isbn        integer,
-  usuario_id                bigint)
-;
+CREATE TABLE usuario (
+    id bigint NOT NULL AUTO_INCREMENT,
+    email character varying(254),
+    name character varying(255)
+);
 
-create sequence livro_seq;
+CREATE TABLE voto (
+    id bigint NOT NULL AUTO_INCREMENT,
+    votado boolean NOT NULL,
+    par_isbn integer,
+    usuario_id bigint,
+    visualizado_isbn integer
+);
 
-create sequence usuario_seq;
-
-alter table voto add constraint fk_voto_escolhido_1 foreign key (escolhido_isbn) references livro (isbn);
-create index ix_voto_escolhido_1 on voto (escolhido_isbn);
-alter table voto add constraint fk_voto_naoEscolhido_2 foreign key (nao_escolhido_isbn) references livro (isbn);
-create index ix_voto_naoEscolhido_2 on voto (nao_escolhido_isbn);
-alter table voto add constraint fk_voto_usuario_3 foreign key (usuario_id) references usuario (id);
-create index ix_voto_usuario_3 on voto (usuario_id);
+ALTER TABLE livro
+    ADD CONSTRAINT livro_pkey PRIMARY KEY (isbn);
 
 
+ALTER TABLE usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
 
-# --- !Downs
 
-drop table if exists livro cascade;
+ALTER TABLE voto
+    ADD CONSTRAINT voto_pkey PRIMARY KEY (id);
 
-drop table if exists usuario cascade;
 
-drop table if exists voto cascade;
+ALTER TABLE voto
+    ADD CONSTRAINT fk_csk51tsl0axr0xdrp5ral8y7c FOREIGN KEY (visualizado_isbn) REFERENCES livro(isbn);
 
-drop sequence if exists livro_seq;
+ALTER TABLE voto
+    ADD CONSTRAINT fk_oidsbghjhfvy88jc914u5aoxh FOREIGN KEY (usuario_id) REFERENCES usuario(id);
 
-drop sequence if exists usuario_seq;
-
+ALTER TABLE voto
+    ADD CONSTRAINT fk_v3qv9v8sdsbk26bto96gs95y FOREIGN KEY (par_isbn) REFERENCES livro(isbn);

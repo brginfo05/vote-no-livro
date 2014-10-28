@@ -3,10 +3,7 @@ package models;
 import org.apache.commons.lang3.StringUtils;
 import play.data.validation.Constraints;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by brg on 25/10/2014.
@@ -16,7 +13,7 @@ import javax.persistence.Id;
 public class Usuario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(length = 254)
