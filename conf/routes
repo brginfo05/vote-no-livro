@@ -3,13 +3,15 @@
 # ~~~~
 
 # Home page
-GET         /                                controllers.ApplicationController.index()
+GET         /                                        controllers.ApplicationController.index()
 
-GET         /votar/:votado/:naoVotado        controllers.RankingController.votar(votado:Int, naoVotado:Int)
+GET         /vote-no-livro                           controllers.ApplicationController.main()
 
-POST        /usuario/cadastrar               controllers.UsuarioController.cadastrar()
+GET         /vote-no-livro/:votado/:naoVotado        controllers.RankingController.votar(votado:Int, naoVotado:Int)
 
-GET         /ranking                         controllers.RankingController.exibir()
+POST        /vote-no-livro/usuario/cadastrar         controllers.UsuarioController.cadastrar()
+
+GET         /vote-no-livro/ranking                   controllers.RankingController.exibir()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                    controllers.Assets.at(path="/public", file)
+GET         /assets/*file                            controllers.Assets.at(path="/public", file)

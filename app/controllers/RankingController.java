@@ -35,6 +35,6 @@ public class RankingController extends Controller {
         Usuario usuario = UsuarioController.recuperar();
         votoService.votar(idVotado, idNaoVotado, usuario);
 
-        return redirect(routes.ApplicationController.index());
+        return redirect(routes.ApplicationController.main());
     }
 }

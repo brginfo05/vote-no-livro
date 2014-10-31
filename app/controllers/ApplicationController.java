@@ -15,8 +15,12 @@ public class ApplicationController extends Controller {
 
     private static LivroService livroService = new LivroService();
 
-    @Transactional
     public static Result index() {
+        return redirect(routes.ApplicationController.main());
+    }
+
+    @Transactional
+    public static Result main() {
         Usuario usuario = UsuarioController.criar();
         Dupla dupla = livroService.recuperarDupla(usuario);
 
