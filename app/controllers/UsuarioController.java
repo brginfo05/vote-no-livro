@@ -2,6 +2,7 @@ package controllers;
 
 import models.Usuario;
 import play.data.Form;
+import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.mvc.Result;
 import repositories.UsuarioRepository;

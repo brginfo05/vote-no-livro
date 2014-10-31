@@ -21,7 +21,7 @@ public class Voto {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
     @ManyToOne
     private Livro visualizado;
